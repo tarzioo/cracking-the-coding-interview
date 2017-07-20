@@ -5,32 +5,29 @@
 ###############################
 
 
-"""Implement a method to preform basic string compression using the count if the repeated characters
+"""Assume you have a method, is_substring which checks if one word is a is_substring
+   of another. given two strings, check if the first is a rotation of the second string
     
-    >>> string_compression("aabcccccaaa")
-    'a2b1c5a3'
+    >>> string_rotation("waterbottle", "erbottlewat")
+    True
 
-    >>> string_compression("abcdefasd")
-    'abcdefasd'
+    >>> string_rotation("foo", "bar")
+    False
+
+    >>> string_rotation("foo", "foofoo")
+    False
 
 """
 
-def string_compression(s):
+def is_substring(string, sub):
+    return string.find(sub) != -1
 
-    result = []
-    count = 0
+def string_rotation(s1, s2):
+    if len(s1) == len(s2) != 0:
+        return is_substring(s1+s1, s2)
+    return False
 
-    for i in range(len(s)):
-        if i != 0 and s[i] != s[i-1]:
-            result.append(s[i-1] + str(count))
-            count = 0
-
-        count += 1
-
-    result.append(s[-1] + str(count))
-
-    return min(s, ''.join(result), key=len)
-
+    
 
 
 
